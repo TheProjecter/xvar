@@ -1,0 +1,4 @@
+C:\Users\Brian Bosak\Documents\Visual Studio 2010\Projects\XVAR2\XVARStudio\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Brian Bosak\Documents\Visual Studio 2010\Projects\XVAR2\XVARStudio\obj\Debug\App.g.cs
+C:\Users\Brian Bosak\Documents\Visual Studio 2010\Projects\XVAR2\XVARStudio\obj\Debug\MainPage.g.cs
+C:\Users\Brian Bosak\Documents\Visual Studio 2010\Projects\XVAR2\XVARStudio\obj\Debug\XVARStudio.g.resources

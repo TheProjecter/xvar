@@ -1,0 +1,11 @@
+stralloc "Hello user. This device is running " a
+stralloc " and was compiled with " b
+stralloc "." c
+call osversion AsString null d
+call a Add d a
+call a Add b a
+call a Add guestos a
+call a Add c a
+call a ToConsole
+endinit
+END

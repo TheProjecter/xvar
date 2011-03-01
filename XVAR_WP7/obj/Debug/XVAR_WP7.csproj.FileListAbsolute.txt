@@ -1,0 +1,8 @@
+C:\Users\Brian Bosak\Documents\SCHOOL computer\Visual Studio 2010\Projects\XVAR2\XVAR_WP7\Bin\Debug\XVAR_WP7.dll
+C:\Users\Brian Bosak\Documents\SCHOOL computer\Visual Studio 2010\Projects\XVAR2\XVAR_WP7\Bin\Debug\XVAR_WP7.pdb
+C:\Users\Brian Bosak\Documents\SCHOOL computer\Visual Studio 2010\Projects\XVAR2\XVAR_WP7\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Brian Bosak\Documents\SCHOOL computer\Visual Studio 2010\Projects\XVAR2\XVAR_WP7\obj\Debug\XVAR_WP7.dll
+C:\Users\Brian Bosak\Documents\SCHOOL computer\Visual Studio 2010\Projects\XVAR2\XVAR_WP7\obj\Debug\XVAR_WP7.pdb
+C:\Users\Brian Bosak\Documents\Visual Studio 2010\Projects\XVAR2\XVAR_WP7\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Brian Bosak\Documents\Visual Studio 2010\Projects\XVAR2\XVAR_WP7\obj\Debug\XVAR_WP7.dll
+C:\Users\Brian Bosak\Documents\Visual Studio 2010\Projects\XVAR2\XVAR_WP7\obj\Debug\XVAR_WP7.pdb
