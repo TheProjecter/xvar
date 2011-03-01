@@ -645,6 +645,7 @@ namespace XVAR2
                 {
                     //Read in function length, and download function
                     int funclen = source.ReadInt32();
+                    //TODO: Correct this. There should be a better way to load functions (without loading them all into RAM first. Maybe as variables somehow???)
                     byte[] functiondata = source.ReadBytes(funclen);
                     MemoryStream mstream = new MemoryStream(functiondata);
                     BinaryReader mreader = new BinaryReader(mstream);

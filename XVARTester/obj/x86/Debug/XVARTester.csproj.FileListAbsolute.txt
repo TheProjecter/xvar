@@ -12,3 +12,5 @@ C:\Users\Brian Bosak\Documents\SCHOOL computer\Visual Studio 2010\Projects\XVAR2
 C:\Users\Brian Bosak\Documents\SCHOOL computer\Visual Studio 2010\Projects\XVAR2\XVARTester\bin\Debug\XVAR2.dll
 C:\Users\Brian Bosak\Documents\SCHOOL computer\Visual Studio 2010\Projects\XVAR2\XVARTester\bin\Debug\XVAR2.pdb
 C:\Users\Brian Bosak\Documents\SCHOOL computer\Visual Studio 2010\Projects\XVAR2\XVARTester\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Brian Bosak\Documents\SCHOOL computer\Visual Studio 2010\Projects\XVAR2\xvar\XVARTester\obj\x86\Debug\XVARTester.exe
+C:\Users\Brian Bosak\Documents\SCHOOL computer\Visual Studio 2010\Projects\XVAR2\xvar\XVARTester\obj\x86\Debug\XVARTester.pdb
