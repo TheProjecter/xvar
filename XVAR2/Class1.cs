@@ -394,7 +394,8 @@ namespace XVAR2
                 }
             }
             #endregion
-           
+           //Opcode 4 = Internal function offset declaration (long)
+
             #region Compilation logic
             long lastfunctionoffset = 0;
             bool hascalled = false;
@@ -402,14 +403,15 @@ namespace XVAR2
  int funcID = 0;
             output.Write((long)0);
             long zpos = output.BaseStream.Position;
+            string currentFunction = "";
             FunctionDeclaration mdec = new FunctionDeclaration();
-            List<string> lostandfound = new List<string>();
+            Dictionary<string, long> lostandfound = new Dictionary<string, long>();
             VMObject parentObject = null;
             while (!source.EndOfStream)
             {
             
                 string instruction = source.ReadLine();
-            parseInstruction:
+          
                 string[] parts = intellisplit(instruction);
                 if (parts[0] == "function")
                 {
@@ -417,7 +419,7 @@ namespace XVAR2
                     output.BaseStream.Position = lastfunctionoffset;
                     //Length of function
                     output.Write((int)0);
-                    
+                    currentFunction = parts[3];
                     //Return type
                     foreach (KeyValuePair<double, Type> e in VMObject.types)
                     {
@@ -454,14 +456,16 @@ namespace XVAR2
                     byte[] mray = new byte[tval];
                     output.BaseStream.Read(mray,0,mray.Length);
                     mdec.function = mray;
-                   
+                   long previous = lastfunctionoffset;
                     parentObject.functions.Add(funcID, mdec);
-                    foreach (string et in lostandfound)
-                    {
-                        instruction = et;
-                        goto parseInstruction;
-                    }
+                    
                     lastfunctionoffset = output.BaseStream.Position;
+                    if (lostandfound.Keys.Contains(currentFunction))
+                    {
+                        output.BaseStream.Position = lostandfound[currentFunction];
+                        output.Write(previous);
+                        output.BaseStream.Position = lastfunctionoffset;
+                    }
                 }
                 if (parts[0] == "unalloc")
                 {
@@ -522,7 +526,11 @@ namespace XVAR2
                     VMObject currentObj = objects[parts[1]];
                     if (!currentObj.functionIdentifiers.ContainsKey(parts[2]))
                     {
-                        lostandfound.Add(instruction);
+                        output.Write((byte)4);
+                        long ntpos = output.BaseStream.Position;
+                        //Function offset to be determined
+                        output.Write((long)-1);
+                        lostandfound.Add(parts[2], ntpos);
                     }
                     else
                     {
@@ -632,11 +640,11 @@ namespace XVAR2
                 }
                 
             }
-           
+            long beginningoffile = source.BaseStream.Position;
             //Read in the length of the INIT function
             long initlen = source.ReadInt64();
             byte[] mainmethod = source.ReadBytes((int)initlen);
-            XVARMethod method = new XVARMethod(mainmethod,this);
+            XVARMethod method = new XVARMethod(source.BaseStream,this);
            
             //TODO: Read in all of the functions (with offsets)
             while (true)
@@ -663,6 +671,7 @@ namespace XVAR2
                 }
             }
             //Invoke the MAIN method
+            source.BaseStream.Position = beginningoffile;
             return method.Invoke(new VMObject[0]);
            
             #endregion
