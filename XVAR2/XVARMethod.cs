@@ -14,14 +14,14 @@ namespace XVAR2
         /// </summary>
         internal static Dictionary<string, long> offsets = new Dictionary<string, long>();
         VirtualMachine vmInstance;
-        public XVARMethod(byte[] xvarASM, VirtualMachine instance)
+        public XVARMethod(Stream istream, VirtualMachine instance)
         {
-            MemoryStream mstream = new MemoryStream(xvarASM);
-            internstream = mstream;
+           
+            internstream = istream;
             vmInstance = instance;
         }
 
-        MemoryStream internstream;
+        Stream internstream;
         public VMObject Invoke(VMObject[] args)
         {
             //Parse the code in the script and return the resultant value
@@ -29,9 +29,17 @@ namespace XVAR2
             VMThread currentThread = new VMThread();
             vmInstance.State.threads.Add(currentThread);
            while(true) {
+           initProc:
                currentThread.executionState = mreader.BaseStream.Position;
              try {
+
             byte opcode = mreader.ReadByte();
+            if (opcode == 4)
+            {
+            //SEEK instructor
+                mreader.BaseStream.Position = mreader.ReadInt64();
+                goto initProc;
+            }
             if (opcode == 3)
             {
                 vmInstance.internalobjects.Remove(mreader.ReadDouble());
